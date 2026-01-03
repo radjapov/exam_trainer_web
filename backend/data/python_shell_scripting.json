@@ -1,0 +1,549 @@
+[
+  {
+    "id": 1,
+    "module": "m1",
+    "type": "theory",
+    "title": "PowerShell vs Command Prompt",
+    "body": "What is PowerShell, and how is it different from Command Prompt?",
+    "checkpoints": [
+      "PowerShell definition",
+      "object-based pipeline",
+      "Command Prompt text-based",
+      "cmdlets",
+      "scripting capabilities",
+      "administration tasks",
+      "modern vs legacy tool"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "module": "m3",
+    "type": "theory",
+    "title": "Packet Sniffing with Scapy",
+    "body": "Describe the packet sniffing and manipulation workflow in Scapy. How does it interact with network layers?",
+    "checkpoints": [
+      "packet sniffing definition",
+      "Scapy library",
+      "packet capture",
+      "packet parsing",
+      "packet manipulation",
+      "OSI/TCP-IP layers",
+      "use cases"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "module": "m1",
+    "type": "theory",
+    "title": "Variables in Bash",
+    "body": "How are variables declared and used in Bash scripting?",
+    "checkpoints": [
+      "variable declaration",
+      "no data types",
+      "assignment syntax",
+      "variable usage",
+      "environment variables",
+      "scope",
+      "example"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "module": "m3",
+    "type": "theory",
+    "title": "Python for Packet Analysis",
+    "body": "Explain the role of Python in performing network packet analysis.",
+    "checkpoints": [
+      "packet analysis definition",
+      "Python flexibility",
+      "Scapy usage",
+      "socket programming",
+      "automation",
+      "protocol analysis",
+      "security applications"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 5,
+    "module": "m4",
+    "type": "theory",
+    "title": "Client-side vs Server-side Scripting",
+    "body": "What is the difference between client-side and server-side scripting?",
+    "checkpoints": [
+      "client-side definition",
+      "server-side definition",
+      "execution location",
+      "examples (JS, PHP, Python)",
+      "security differences",
+      "performance impact",
+      "use cases"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 6,
+    "module": "m1",
+    "type": "theory",
+    "title": "Hash Tables in PowerShell",
+    "body": "Explain the use of hash tables in PowerShell with an example.",
+    "checkpoints": [
+      "hash table definition",
+      "key-value pairs",
+      "PowerShell syntax",
+      "lookup efficiency",
+      "example usage",
+      "configuration storage"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 7,
+    "module": "m2",
+    "type": "theory",
+    "title": "Mutable vs Immutable Data Types",
+    "body": "Explain the difference between mutable and immutable data types with examples.",
+    "checkpoints": [
+      "mutable definition",
+      "immutable definition",
+      "examples of mutable types",
+      "examples of immutable types",
+      "memory behavior",
+      "impact on programs"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 8,
+    "module": "m3",
+    "type": "theory",
+    "title": "Python in IDS",
+    "body": "Describe the role of Python in building Intrusion Detection Systems (IDS). Which libraries are essential and why?",
+    "checkpoints": [
+      "IDS definition",
+      "Python role",
+      "packet capture",
+      "traffic analysis",
+      "Scapy",
+      "Snort/Suricata integration",
+      "automation benefits"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 9,
+    "module": "m1",
+    "type": "theory",
+    "title": "Shell Script Basics",
+    "body": "What is a shell script? Explain its basic structure.",
+    "checkpoints": [
+      "shell script definition",
+      "shebang",
+      "commands",
+      "variables",
+      "control structures",
+      "execution permission"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 10,
+    "module": "m2",
+    "type": "theory",
+    "title": "Python Memory Management",
+    "body": "Explain Python’s memory management mechanism, including reference counting and garbage collection.",
+    "checkpoints": [
+      "memory management overview",
+      "reference counting",
+      "garbage collection",
+      "cyclic references",
+      "heap usage",
+      "performance considerations"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+
+  {
+    "id": 11,
+    "module": "m5",
+    "type": "algorithm",
+    "title": "Largest of Three Numbers (Bash)",
+    "body": "Write a Bash script to display the largest of three numbers entered by the user.",
+    "checkpoints": [
+      "input reading",
+      "numeric comparison",
+      "if-elif-else",
+      "handling three values",
+      "output result",
+      "script correctness"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 12,
+    "module": "m4",
+    "type": "theory",
+    "title": "CSS Purpose",
+    "body": "Explain the purpose of CSS in web development.",
+    "checkpoints": [
+      "CSS definition",
+      "separation of concerns",
+      "styling HTML",
+      "layout control",
+      "responsiveness",
+      "reusability"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 13,
+    "module": "m1",
+    "type": "theory",
+    "title": "WMIC",
+    "body": "What is WMIC? Mention two useful WMIC commands.",
+    "checkpoints": [
+      "WMIC definition",
+      "Windows management",
+      "command-line tool",
+      "example commands",
+      "system information",
+      "administration usage"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 14,
+    "module": "m5",
+    "type": "algorithm",
+    "title": "Signal Handling in Bash",
+    "body": "How does signal handling work in Bash? Explain the use of trap with examples.",
+    "checkpoints": [
+      "signal concept",
+      "common signals",
+      "trap command",
+      "cleanup actions",
+      "example usage",
+      "script robustness"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 15,
+    "module": "m2",
+    "type": "theory",
+    "title": "Python Dictionaries",
+    "body": "What are dictionaries in Python? Explain with an example.",
+    "checkpoints": [
+      "dictionary definition",
+      "key-value storage",
+      "access by key",
+      "example",
+      "use cases",
+      "performance"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 16,
+    "module": "m2",
+    "type": "theory",
+    "title": "Why Python is Popular",
+    "body": "What are the key features that make Python a popular programming language?",
+    "checkpoints": [
+      "simplicity",
+      "readability",
+      "large standard library",
+      "cross-platform",
+      "community support",
+      "wide application areas"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 17,
+    "module": "m1",
+    "type": "theory",
+    "title": "If-Else in Shell",
+    "body": "Explain the use of if-else conditionals in shell scripting.",
+    "checkpoints": [
+      "conditional logic",
+      "if syntax",
+      "else clause",
+      "test conditions",
+      "comparison operators",
+      "example"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 18,
+    "module": "m4",
+    "type": "theory",
+    "title": "JavaScript Interactivity",
+    "body": "Explain the role of JavaScript in website interactivity.",
+    "checkpoints": [
+      "JavaScript role",
+      "DOM manipulation",
+      "event handling",
+      "client-side logic",
+      "dynamic content",
+      "user interaction"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 19,
+    "module": "m1",
+    "type": "theory",
+    "title": "PowerShell Pipeline",
+    "body": "Explain the PowerShell pipeline architecture. How does object-based piping differ from text-based piping?",
+    "checkpoints": [
+      "pipeline concept",
+      "object-based piping",
+      "text-based piping",
+      "cmdlet chaining",
+      "data transformation",
+      "advantage over traditional shells"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 20,
+    "module": "m5",
+    "type": "algorithm",
+    "title": "Python Inheritance Example",
+    "body": "Write a Python program to implement a simple class hierarchy for Vehicle → Car → ElectricCar demonstrating inheritance, method overriding, and super().",
+    "checkpoints": [
+      "class definition",
+      "inheritance",
+      "method overriding",
+      "super usage",
+      "class hierarchy",
+      "correct output"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+
+  {
+    "id": 21,
+    "module": "m3",
+    "type": "theory",
+    "title": "Sockets in Python",
+    "body": "What is a socket? How is the Python socket library used for basic network communication?",
+    "checkpoints": [
+      "socket definition",
+      "client-server model",
+      "TCP/UDP sockets",
+      "socket library usage",
+      "basic communication steps",
+      "network applications"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 22,
+    "module": "m3",
+    "type": "theory",
+    "title": "Offensive Python",
+    "body": "What is offensive Python? Give any two examples.",
+    "checkpoints": [
+      "offensive security concept",
+      "penetration testing",
+      "automation scripts",
+      "example tools",
+      "ethical usage"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 23,
+    "module": "m1",
+    "type": "theory",
+    "title": "Loops in PowerShell",
+    "body": "How are loops implemented in PowerShell?",
+    "checkpoints": [
+      "loop purpose",
+      "for loop",
+      "foreach loop",
+      "while loop",
+      "do-while loop",
+      "example usage"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 24,
+    "module": "m1",
+    "type": "theory",
+    "title": "PowerShell for Hardening",
+    "body": "How can PowerShell be used for system hardening?",
+    "checkpoints": [
+      "system hardening definition",
+      "security configuration",
+      "policy enforcement",
+      "automation",
+      "monitoring",
+      "administrative scripts"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 25,
+    "module": "m2",
+    "type": "theory",
+    "title": "Subshells vs Parent Shells",
+    "body": "Explain the difference between subshells and parent shells. How does it affect variable scope in Bash?",
+    "checkpoints": [
+      "parent shell definition",
+      "subshell definition",
+      "process creation",
+      "variable scope",
+      "inheritance behavior",
+      "practical impact"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 26,
+    "module": "m2",
+    "type": "theory",
+    "title": "Python Virtual Environments",
+    "body": "What is the role of virtual environments in Python, and why are they important for secure development?",
+    "checkpoints": [
+      "virtual environment definition",
+      "dependency isolation",
+      "package management",
+      "security benefits",
+      "reproducibility",
+      "development best practices"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 27,
+    "module": "m5",
+    "type": "algorithm",
+    "title": "Directory Monitoring Script",
+    "body": "Write a Bash script that continuously monitors a directory and prints a message whenever a new file is created.",
+    "checkpoints": [
+      "directory monitoring",
+      "loop or watcher",
+      "file detection",
+      "event handling",
+      "output message",
+      "script reliability"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 28,
+    "module": "m1",
+    "type": "theory",
+    "title": "PowerShell Cmdlets",
+    "body": "Explain how PowerShell cmdlets follow the Verb-Noun naming convention. Give three examples and their functions.",
+    "checkpoints": [
+      "cmdlet definition",
+      "verb-noun convention",
+      "standard verbs",
+      "example cmdlets",
+      "readability",
+      "discoverability"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 29,
+    "module": "m4",
+    "type": "theory",
+    "title": "Asynchronous JavaScript",
+    "body": "What is asynchronous programming in JavaScript, and how do callbacks, promises, and async/await differ?",
+    "checkpoints": [
+      "asynchronous concept",
+      "non-blocking execution",
+      "callbacks",
+      "promises",
+      "async/await",
+      "use cases"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 30,
+    "module": "m3",
+    "type": "theory",
+    "title": "Python for Log Analysis",
+    "body": "Describe how Python can be used for log analysis in cybersecurity. Which libraries or techniques are commonly used?",
+    "checkpoints": [
+      "log analysis definition",
+      "Python advantages",
+      "regular expressions",
+      "parsing techniques",
+      "common libraries",
+      "security insights"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  }
+]

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Exam Trainer</title>
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta name="theme-color"
+          content="#ffffff">
+</head>
+<body>
+
+  <h2>Exam Trainer</h2>
+
+  <!-- ===== верхняя панель ===== -->
+  <div class="top-bar">
+  <select id="subject"></select>
+  <button onclick="startExam()">Начать экзамен</button>
+  <span id="timer"></span>
+</div>
+
+  <hr>
+
+  <!-- ===== вопросы ===== -->
+  <label>Вопрос:</label>
+  <select id="question"></select>
+
+  <pre id="questionText"></pre>
+
+  <!-- ===== ответ ===== -->
+  <h3>Мой ответ</h3>
+  <textarea id="notes" rows="6" style="width:100%"></textarea>
+
+  <br><br>
+
+  <button onclick="checkAnswer()">Проверить ответ</button>
+
+  <pre id="result"></pre>
+
+  <!-- JS -->
+  <script src="/static/app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/static/service-worker.js");
+  }
+</script>
+
+</body>
+</html>

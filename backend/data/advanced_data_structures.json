@@ -1,0 +1,618 @@
+[
+  {
+    "id": 1,
+    "module": "m1",
+    "type": "theory",
+    "title": "Dictionary ADT",
+    "body": "Define the Dictionary ADT and list two common implementation choices.",
+    "checkpoints": [
+      "definition of dictionary ADT",
+      "key-value pairs",
+      "search operation",
+      "insert operation",
+      "delete operation",
+      "hash table implementation",
+      "balanced tree implementation"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 2,
+    "module": "m1",
+    "type": "algorithm",
+    "title": "Open Addressing in Hashing",
+    "body": "Explain open addressing in hashing. Describe linear probing and double hashing, showing how primary clustering differs between them. Include brief pseudocode for an insert using double hashing.",
+    "checkpoints": [
+      "open addressing definition",
+      "linear probing",
+      "double hashing",
+      "primary clustering",
+      "secondary clustering",
+      "probe sequence",
+      "insert pseudocode"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "module": "m1",
+    "type": "theory",
+    "title": "Collisions in Hashing",
+    "body": "Describe the problem of collisions in hashing. Why do collisions occur even with good hash functions?",
+    "checkpoints": [
+      "collision definition",
+      "limited table size",
+      "pigeonhole principle",
+      "hash function properties",
+      "impact on performance",
+      "need for collision resolution"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 4,
+    "module": "m1",
+    "type": "theory",
+    "title": "Clustering and Probing",
+    "body": "Explain the terms primary clustering, secondary clustering, and uniform probing. Discuss how different collision resolution techniques reduce or eliminate these problems.",
+    "checkpoints": [
+      "primary clustering",
+      "secondary clustering",
+      "uniform probing",
+      "linear probing issue",
+      "double hashing advantage",
+      "effect on performance"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 5,
+    "module": "m1",
+    "type": "theory",
+    "title": "Hashing Techniques",
+    "body": "What is hashing? Differentiate between Separate Chaining and Open Addressing.",
+    "checkpoints": [
+      "hashing definition",
+      "hash function",
+      "separate chaining",
+      "open addressing",
+      "memory usage comparison",
+      "performance comparison"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 6,
+    "module": "m1",
+    "type": "theory",
+    "title": "Dictionary Operations",
+    "body": "Describe the dictionary and its operations.",
+    "checkpoints": [
+      "dictionary definition",
+      "search operation",
+      "insert operation",
+      "delete operation",
+      "update operation",
+      "time complexity discussion"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 7,
+    "module": "m2",
+    "type": "theory",
+    "title": "Randomized Data Structures",
+    "body": "Explain briefly why randomized data structures (like skip lists) are useful compared to strictly balanced deterministic structures.",
+    "checkpoints": [
+      "randomization concept",
+      "expected performance",
+      "avoid worst-case",
+      "simpler algorithms",
+      "skip list example",
+      "comparison with AVL or RB trees"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 8,
+    "module": "m2",
+    "type": "theory",
+    "title": "Brute Force String Matching",
+    "body": "Explain the brute-force string matching algorithm. What are its time complexities in best and worst cases?",
+    "checkpoints": [
+      "basic idea",
+      "character-by-character comparison",
+      "best case complexity",
+      "worst case complexity",
+      "example",
+      "inefficiency explanation"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 9,
+    "module": "m2",
+    "type": "theory",
+    "title": "Purpose of Randomness",
+    "body": "Describe the purpose of adding randomness to data structures. How does it help ensure consistently good performance compared to deterministic algorithms during dynamic tasks?",
+    "checkpoints": [
+      "randomness purpose",
+      "expected time complexity",
+      "avoid adversarial input",
+      "dynamic operations",
+      "comparison with deterministic structures"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 10,
+    "module": "m2",
+    "type": "algorithm",
+    "title": "Skip List Search",
+    "body": "Explain the search operation in a Skip List with an example. How is its complexity derived?",
+    "checkpoints": [
+      "skip list structure",
+      "multiple levels",
+      "search process",
+      "example traversal",
+      "expected time complexity",
+      "probabilistic analysis"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 11,
+    "module": "m2",
+    "type": "theory",
+    "title": "Deterministic Skip Lists",
+    "body": "Describe Deterministic Skip Lists. Mention one advantage and one limitation.",
+    "checkpoints": [
+      "deterministic level assignment",
+      "difference from randomized skip lists",
+      "advantage",
+      "limitation",
+      "complexity impact"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 12,
+    "module": "m2",
+    "type": "theory",
+    "title": "Skip List Node Structure",
+    "body": "Discuss the structure and components of a skip list node and explain how levels are assigned.",
+    "checkpoints": [
+      "node structure",
+      "forward pointers",
+      "levels",
+      "probability-based level assignment",
+      "head node"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 13,
+    "module": "m2",
+    "type": "theory",
+    "title": "Skip Lists vs Balanced Trees",
+    "body": "Explain the advantages and disadvantages of Skip Lists when compared to balanced search trees such as AVL or Red-Black Trees.",
+    "checkpoints": [
+      "comparison basis",
+      "simplicity of skip lists",
+      "expected vs worst-case",
+      "memory overhead",
+      "AVL or RB tree comparison"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 14,
+    "module": "m3",
+    "type": "algorithm",
+    "title": "AVL Tree Balancing",
+    "body": "Give the balancing condition of an AVL tree and explain in one line how rotations restore balance.",
+    "checkpoints": [
+      "AVL definition",
+      "height difference <= 1",
+      "balance factor",
+      "LL rotation",
+      "RR rotation",
+      "LR rotation",
+      "RL rotation"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 15,
+    "module": "m3",
+    "type": "algorithm",
+    "title": "Red-Black Trees",
+    "body": "Explain Red-Black Trees: give the five properties, and show with a short example how insertion may recolor and/or rotate to restore properties.",
+    "checkpoints": [
+      "red-black tree definition",
+      "five properties",
+      "root is black",
+      "no two red nodes adjacent",
+      "black height",
+      "recoloring",
+      "rotation during insertion"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 16,
+    "module": "m3",
+    "type": "algorithm",
+    "title": "BST Construction",
+    "body": "Construct a BST using the keys: 40, 20, 10, 30, 60, 50, 70. Show the tree after each insertion and explain its height.",
+    "checkpoints": [
+      "BST property",
+      "insertion order",
+      "left subtree keys",
+      "right subtree keys",
+      "tree structure after insertions",
+      "height calculation",
+      "worst-case vs balanced height"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 17,
+    "module": "m3",
+    "type": "algorithm",
+    "title": "Red-Black Tree Construction",
+    "body": "Show step by step the creation of a Red-Black Tree by inserting the keys 10, 20, 30, 15, 25, 27, including recoloring and rotations.",
+    "checkpoints": [
+      "initial insertion as red",
+      "red-black properties",
+      "recoloring case",
+      "left rotation",
+      "right rotation",
+      "fixing red-red violation",
+      "final tree validity"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 18,
+    "module": "m3",
+    "type": "theory",
+    "title": "Red-Black Tree Properties",
+    "body": "Explain the Red-Black Tree and list any three properties that make it balanced.",
+    "checkpoints": [
+      "red-black tree definition",
+      "node color property",
+      "root black",
+      "no consecutive red nodes",
+      "equal black height",
+      "logarithmic height guarantee"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 19,
+    "module": "m4",
+    "type": "algorithm",
+    "title": "KMP Algorithm",
+    "body": "Describe the Knuth–Morris–Pratt (KMP) algorithm. Construct the prefix (LPS) table for the pattern ABABAC and show the KMP search steps.",
+    "checkpoints": [
+      "string matching problem",
+      "idea of avoiding re-comparison",
+      "LPS definition",
+      "LPS construction",
+      "pattern shift logic",
+      "search process",
+      "time complexity O(n + m)"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 20,
+    "module": "m4",
+    "type": "algorithm",
+    "title": "Role of LPS Table",
+    "body": "Explain the role of the LPS table in the KMP algorithm. Construct the LPS table for ABAC and show the KMP search steps.",
+    "checkpoints": [
+      "LPS meaning",
+      "prefix-suffix relation",
+      "avoiding backtracking",
+      "LPS table construction",
+      "pattern shift using LPS",
+      "efficiency improvement"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 21,
+    "module": "m4",
+    "type": "algorithm",
+    "title": "Huffman Coding",
+    "body": "Explain the Huffman coding algorithm. Construct the Huffman Tree for the message “BCCABBDDAECCBBAEDDCC” and determine the binary codes.",
+    "checkpoints": [
+      "frequency table",
+      "priority queue",
+      "greedy approach",
+      "tree construction",
+      "binary code assignment",
+      "prefix-free property",
+      "compression advantage"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 22,
+    "module": "m4",
+    "type": "algorithm",
+    "title": "KMP Simulation",
+    "body": "Construct the LPS table and simulate the KMP search for pattern “ABCDABD” over the given text.",
+    "checkpoints": [
+      "LPS table construction",
+      "pattern preprocessing",
+      "text scan",
+      "character match/mismatch handling",
+      "index updates",
+      "successful match detection"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 23,
+    "module": "m4",
+    "type": "algorithm",
+    "title": "Trie Operations",
+    "body": "Build a Trie for the given word set, perform search, deletion, and list remaining words.",
+    "checkpoints": [
+      "trie node structure",
+      "word insertion",
+      "search operation",
+      "deletion logic",
+      "end-of-word marker",
+      "remaining words traversal"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 24,
+    "module": "m4",
+    "type": "algorithm",
+    "title": "Trie Construction",
+    "body": "Construct a Trie for the given set of words and perform search and insertion operations.",
+    "checkpoints": [
+      "root node",
+      "character-level branching",
+      "insertion steps",
+      "search steps",
+      "time complexity O(length of word)",
+      "advantages over BST for strings"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 25,
+    "module": "m4",
+    "type": "theory",
+    "title": "Standard vs Compressed Trie",
+    "body": "Differentiate between Standard Trie and Compressed Trie with diagrams and performance comparison.",
+    "checkpoints": [
+      "standard trie definition",
+      "compressed trie definition",
+      "path compression",
+      "space optimization",
+      "lookup time",
+      "use cases"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 26,
+    "module": "m5",
+    "type": "algorithm",
+    "title": "k-d Tree",
+    "body": "Define a k-d tree and state the time complexity of a typical range search in average case.",
+    "checkpoints": [
+      "k-d tree definition",
+      "multidimensional points",
+      "splitting dimension",
+      "binary space partitioning",
+      "range search concept",
+      "average case complexity"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 27,
+    "module": "m5",
+    "type": "theory",
+    "title": "Priority Search Tree",
+    "body": "What is a Priority Search Tree? Give one application where it is preferable to a plain k-d tree.",
+    "checkpoints": [
+      "priority search tree definition",
+      "heap property",
+      "BST property",
+      "range searching",
+      "example application",
+      "comparison with k-d tree"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "C"
+  },
+  {
+    "id": 28,
+    "module": "m5",
+    "type": "theory",
+    "title": "Range Searching",
+    "body": "Explain range searching and discuss one-dimensional range searching.",
+    "checkpoints": [
+      "range searching definition",
+      "query range",
+      "one-dimensional case",
+      "data structures used",
+      "time complexity",
+      "applications"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "C"
+  },
+  {
+    "id": 29,
+    "module": "m5",
+    "type": "theory",
+    "title": "Quad Tree vs k-d Tree",
+    "body": "Compare quad tree with k-d tree.",
+    "checkpoints": [
+      "quad tree structure",
+      "k-d tree structure",
+      "space partitioning",
+      "dimensionality",
+      "performance comparison",
+      "use cases"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 30,
+    "module": "m5",
+    "type": "algorithm",
+    "title": "k-d Tree Working",
+    "body": "Explain the k-d tree and its working.",
+    "checkpoints": [
+      "node structure",
+      "splitting axis",
+      "tree construction",
+      "search operation",
+      "range query handling",
+      "efficiency discussion"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 31,
+    "module": "m5",
+    "type": "algorithm",
+    "title": "2-D Tree Construction",
+    "body": "Construct a 2-D tree using the given points step by step.",
+    "checkpoints": [
+      "point set",
+      "alternating dimensions",
+      "node insertion order",
+      "tree structure",
+      "search region",
+      "final tree correctness"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  },
+  {
+    "id": 32,
+    "module": "m5",
+    "type": "theory",
+    "title": "Priority Search Trees for 2D Range Searching",
+    "body": "Why are Priority Search Trees suitable for two-dimensional range searching? Explain with an example.",
+    "checkpoints": [
+      "2D range searching problem",
+      "priority on one dimension",
+      "search efficiency",
+      "example scenario",
+      "comparison with other structures"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": "",
+    "_exam_block": "C"
+  },
+  {
+    "id": 33,
+    "module": "m5",
+    "type": "theory",
+    "title": "1D vs 2D Range Searching",
+    "body": "Describe how two-dimensional range searching differs from the one-dimensional case.",
+    "checkpoints": [
+      "one-dimensional searching",
+      "two-dimensional searching",
+      "data structure complexity",
+      "query complexity",
+      "visualization difficulty",
+      "practical applications"
+    ],
+    "explanation": "",
+    "starter_code": "",
+    "notes": ""
+  }
+]

@@ -1,0 +1,354 @@
+[
+  {
+    "id": 1,
+    "module": "m1",
+    "type": "theory",
+    "title": "Applications of Computer Networks",
+    "body": "Applications of Computer Networks",
+    "checkpoints": [
+      "communication",
+      "resource sharing",
+      "file sharing",
+      "e-commerce",
+      "education and e-learning",
+      "healthcare applications",
+      "cloud computing",
+      "social networking"
+    ],
+    "explanation": "Computer networks play a vital role in modern society by enabling communication and resource sharing. One major application is communication, including email, instant messaging, video conferencing, and VoIP services. Networks allow sharing of hardware resources such as printers, scanners, and storage devices, reducing overall cost. File sharing and centralized databases help organizations manage data efficiently. Computer networks support e-commerce applications like online shopping, digital payments, and online banking. In education, networks enable e-learning platforms, virtual classrooms, and online examinations. Healthcare systems use networks for telemedicine, remote diagnosis, and medical record sharing. Cloud computing relies entirely on computer networks to deliver services and storage. Social networking platforms are built on large-scale networks. Overall, computer networks increase efficiency, connectivity, and global collaboration.",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "module": "m1",
+    "type": "theory",
+    "title": "Explain DSL and ADSL",
+    "body": "Explain DSL and ADSL",
+    "checkpoints": [
+      "DSL definition",
+      "use of telephone lines",
+      "always-on connection",
+      "ADSL meaning",
+      "asymmetric speeds",
+      "download vs upload",
+      "distance limitation",
+      "typical applications"
+    ],
+    "explanation": "DSL stands for Digital Subscriber Line and is a technology that provides high-speed internet access over traditional copper telephone lines. It allows users to access the internet while simultaneously making phone calls. DSL is always-on, unlike dial-up connections. ADSL stands for Asymmetric Digital Subscriber Line, which means download speed is higher than upload speed. This asymmetry matches typical home user behavior such as browsing and streaming. ADSL performance depends on the distance between the user and the telephone exchange. DSL technologies are cost-effective and widely available. They support services like web browsing, video streaming, and online gaming. ADSL is commonly used in residential areas. Overall, DSL and ADSL offer reliable broadband connectivity.",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "module": "m1",
+    "type": "theory",
+    "title": "Fast Access Technologies",
+    "body": "Fast Access Technologies",
+    "checkpoints": [
+      "fiber optics",
+      "high bandwidth",
+      "low latency",
+      "cable modem",
+      "DSL technologies",
+      "wireless access",
+      "satellite internet",
+      "support for modern applications"
+    ],
+    "explanation": "Fast access technologies provide high-speed internet connectivity to users. Fiber optic technology offers extremely high bandwidth and low latency, making it ideal for modern applications. Cable modems use coaxial cables originally designed for television networks. DSL technologies provide broadband access over telephone lines. Wireless technologies like 4G and 5G provide mobile internet access. Satellite internet enables connectivity in remote areas. These technologies support data-intensive services such as video streaming and cloud computing. High-speed access improves productivity and user experience. Businesses depend on fast access for real-time applications. Fast access technologies are essential for digital transformation.",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 4,
+    "module": "m1",
+    "type": "theory",
+    "title": "Compare OSI and TCP/IP",
+    "body": "Compare OSI and TCP/IP",
+    "checkpoints": [
+      "number of layers",
+      "OSI seven layers",
+      "TCP/IP four layers",
+      "conceptual vs practical model",
+      "layer mapping",
+      "usage in real networks",
+      "purpose of OSI",
+      "internet foundation"
+    ],
+    "explanation": "The OSI model consists of seven layers, while the TCP/IP model has four layers. OSI is a conceptual reference model developed by ISO. TCP/IP is a practical model used in real-world networking. OSI clearly separates functions for easier understanding and troubleshooting. TCP/IP combines some layers of the OSI model. The OSI model is mainly used for teaching and learning purposes. TCP/IP is the foundation of the internet. OSI defines services, interfaces, and protocols clearly. TCP/IP protocols are more robust and scalable. Both models describe how data moves through a network.",
+    "notes": ""
+  },
+  {
+    "id": 5,
+    "module": "m2",
+    "type": "theory",
+    "title": "Wireless LANs and Applications",
+    "body": "Wireless LANs and Applications",
+    "checkpoints": [
+      "wireless LAN definition",
+      "Wi-Fi technology",
+      "mobility",
+      "ease of installation",
+      "home and office usage",
+      "public hotspots",
+      "IoT support",
+      "security considerations"
+    ],
+    "explanation": "Wireless LANs use radio waves to connect devices without physical cables. Wi-Fi is the most popular wireless LAN technology. Wireless LANs provide mobility and flexibility to users. They are easy and cost-effective to install. Wireless LANs are widely used in homes, offices, and public places. Mobile devices rely heavily on wireless connectivity. Applications include internet access, file sharing, and online communication. Wireless LANs support smart homes and IoT devices. Security measures like encryption are required to protect data. Wireless LANs have become essential in modern networking.",
+    "notes": "",
+    "_exam_block": "A"
+  },
+  {
+    "id": 6,
+    "module": "m2",
+    "type": "theory",
+    "title": "Techniques Used in Network Management",
+    "body": "Techniques Used in Network Management",
+    "checkpoints": [
+      "network management definition",
+      "fault management",
+      "configuration management",
+      "performance management",
+      "security management",
+      "accounting management",
+      "monitoring tools",
+      "automation"
+    ],
+    "explanation": "Network management involves monitoring, maintaining, and optimizing network operations. Fault management identifies and resolves network problems. Configuration management controls device settings and configurations. Performance management ensures efficient network usage. Security management protects networks from threats and attacks. Accounting management tracks network usage and billing. Network monitoring tools help administrators detect issues early. Automation reduces manual effort and errors. Logs and reports are used for analysis. Effective network management ensures reliability and availability.",
+    "notes": "Computers networks play a vital role in modern society by enabling communication and resource sharing one major application is communication, including email, instant messaging, video conferencing and VoIP services",
+    "_exam_block": "A"
+  },
+
+  {
+    "id": 7,
+    "module": "m2",
+    "type": "theory",
+    "title": "IPv4 and IPv6 Difference",
+    "body": "IPv4 and IPv6 Difference",
+    "checkpoints": [
+      "address size",
+      "32-bit vs 128-bit",
+      "address notation",
+      "address exhaustion",
+      "NAT usage",
+      "auto-configuration",
+      "security features",
+      "future scalability"
+    ],
+    "explanation": "IPv4 uses 32-bit addressing, providing about 4.3 billion addresses. IPv6 uses 128-bit addressing, offering a vastly larger address space. IPv4 addresses are written in dotted decimal format. IPv6 addresses use hexadecimal notation. IPv6 supports automatic address configuration. IPv4 relies heavily on NAT to conserve addresses. IPv6 improves security with built-in IPsec support. IPv6 simplifies routing and packet handling. IPv4 is still widely used today. IPv6 is designed to support future internet growth.",
+    "notes": "",
+    "_exam_block": "A"
+  },
+
+  {
+    "id": 8,
+    "module": "m3",
+    "type": "theory",
+    "title": "Parameters Used in Determining Quality of Service",
+    "body": "Parameters Used in Determining Quality of Service",
+    "checkpoints": [
+      "QoS definition",
+      "bandwidth",
+      "latency",
+      "jitter",
+      "packet loss",
+      "real-time applications",
+      "traffic prioritization"
+    ],
+    "explanation": "Quality of Service (QoS) determines the performance level of a network. Bandwidth measures the maximum data transfer rate. Latency refers to the time taken for data to travel across the network. Jitter represents variation in packet delay. Packet loss occurs when data packets fail to reach the destination. QoS is critical for real-time applications like voice and video. High congestion negatively affects QoS. QoS mechanisms prioritize important traffic. Monitoring QoS improves user experience. QoS ensures reliable communication.",
+    "notes": ""
+  },
+
+  {
+    "id": 9,
+    "module": "m3",
+    "type": "theory",
+    "title": "How to Evaluate Network Performance",
+    "body": "How to Evaluate Network Performance",
+    "checkpoints": [
+      "network performance definition",
+      "throughput",
+      "latency",
+      "packet loss",
+      "jitter",
+      "monitoring tools",
+      "traffic analysis",
+      "user experience"
+    ],
+    "explanation": "Network performance evaluation measures how effectively a network operates. Throughput indicates the actual data transfer rate. Latency measures communication delay. Packet loss affects data reliability. Jitter impacts real-time applications. Network monitoring tools collect performance data. Traffic analysis helps identify bottlenecks. Regular performance testing ensures stability. User experience is an important metric. Evaluation helps optimize network design.",
+    "notes": ""
+  },
+
+  {
+    "id": 10,
+    "module": "m3",
+    "type": "theory",
+    "title": "Explain Multicasting",
+    "body": "Explain Multicasting",
+    "checkpoints": [
+      "multicasting definition",
+      "one-to-many communication",
+      "multicast addresses",
+      "bandwidth efficiency",
+      "group membership",
+      "router role",
+      "applications like IPTV"
+    ],
+    "explanation": "Multicasting is a communication method where data is sent to multiple receivers simultaneously. It is more efficient than sending individual copies. Multicasting reduces network traffic and bandwidth usage. It uses special multicast IP addresses. Only subscribed devices receive the data. Multicasting is commonly used in video conferencing. IPTV services rely on multicasting. Routers manage multicast group membership. It improves scalability of applications. Multicasting is ideal for group communication.",
+    "notes": ""
+  },
+  {
+    "id": 11,
+    "module": "m4",
+    "type": "theory",
+    "title": "Mobile IPs",
+    "body": "Mobile IPs",
+    "checkpoints": [
+      "mobility concept",
+      "maintaining same IP address",
+      "home agent",
+      "foreign agent",
+      "location tracking",
+      "handoff process",
+      "seamless communication",
+      "use in wireless networks"
+    ],
+    "explanation": "Mobile IP allows devices to maintain connectivity while moving across networks. It enables a device to keep the same IP address. A home agent tracks the device location. A foreign agent assists when visiting another network. Mobile IP ensures uninterrupted communication. It supports mobility in wireless networks. Smartphones use Mobile IP concepts. It allows seamless roaming. Mobile IP improves user experience. Mobility is crucial in modern networking.",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 12,
+    "module": "m4",
+    "type": "theory",
+    "title": "Unicast and Broadcast",
+    "body": "Unicast and Broadcast",
+    "checkpoints": [
+      "unicast definition",
+      "one-to-one communication",
+      "broadcast definition",
+      "one-to-all communication",
+      "network traffic impact",
+      "use cases",
+      "broadcast domain limitation",
+      "router behavior"
+    ],
+    "explanation": "Unicast communication sends data from one sender to one receiver. Broadcast communication sends data to all devices in a network. Unicast is efficient and widely used on the internet. Broadcast generates more network traffic. Broadcasting is used for address resolution protocols. Unicast supports personalized communication. Broadcast is limited to local networks. Routers usually block broadcasts. Both methods serve different purposes. Choosing the right method improves efficiency.",
+    "notes": ""
+  },
+  {
+    "id": 13,
+    "module": "m5",
+    "type": "theory",
+    "title": "Transport Layer, UDP and TCP Difference",
+    "body": "Transport Layer, UDP and TCP Difference",
+    "checkpoints": [
+      "transport layer role",
+      "end-to-end delivery",
+      "TCP connection-oriented",
+      "reliability and ordering",
+      "acknowledgments and retransmission",
+      "UDP connectionless",
+      "low overhead",
+      "use cases of TCP and UDP"
+    ],
+    "explanation": "The transport layer provides end-to-end data delivery. TCP is a connection-oriented protocol. It ensures reliable and ordered data transfer. TCP uses acknowledgments and retransmissions. UDP is a connectionless protocol. It does not guarantee delivery or order. UDP has lower overhead than TCP. TCP is used for web browsing and email. UDP is used for streaming and gaming. The transport layer uses port numbers.",
+    "notes": "",
+    "_exam_block": "C"
+  },
+  {
+    "id": 14,
+    "module": "m4",
+    "type": "theory",
+    "title": "Multimedia over IP",
+    "body": "Multimedia over IP",
+    "checkpoints": [
+      "multimedia over IP definition",
+      "audio and video transmission",
+      "VoIP",
+      "video streaming",
+      "compression techniques",
+      "real-time protocols",
+      "QoS importance",
+      "packet loss impact"
+    ],
+    "explanation": "Multimedia over IP refers to transmitting audio and video over IP networks. It includes services like VoIP and video streaming. Compression techniques reduce bandwidth usage. Real-time protocols ensure timely delivery. Quality of Service is essential for good performance. Packet loss affects multimedia quality. Multimedia over IP supports online meetings. It enables distance learning. It reduces communication costs. It is widely used today.",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 15,
+    "module": "m5",
+    "type": "theory",
+    "title": "DNS, WWW, and Email Protocols",
+    "body": "DNS, WWW, and Email Protocols",
+    "checkpoints": [
+      "DNS purpose",
+      "domain name to IP mapping",
+      "HTTP and HTTPS",
+      "WWW concept",
+      "SMTP protocol",
+      "POP3 protocol",
+      "IMAP protocol",
+      "role in internet services"
+    ],
+    "explanation": "DNS translates domain names into IP addresses. It makes internet usage user-friendly. WWW uses HTTP and HTTPS protocols. It allows access to web pages. Email communication uses SMTP for sending messages. POP3 and IMAP are used for receiving emails. DNS operates in the background. WWW enables global information sharing. Email protocols ensure message delivery. These services form the core of the internet.",
+    "notes": ""
+  },
+  {
+    "id": 16,
+    "module": "m4",
+    "type": "theory",
+    "title": "HTTP and HTTPS",
+    "body": "HTTP and HTTPS",
+    "checkpoints": [
+      "HTTP definition",
+      "client-server model",
+      "lack of encryption in HTTP",
+      "HTTPS definition",
+      "SSL/TLS usage",
+      "encryption and data integrity",
+      "authentication",
+      "security importance"
+    ],
+    "explanation": "HTTP is a protocol used for transferring web data. It operates in a client-server model. HTTP does not encrypt data. HTTPS is the secure version of HTTP. HTTPS uses SSL/TLS encryption. It protects data from interception. HTTPS ensures data integrity. It authenticates websites. HTTPS is essential for online banking. Security is the main difference.",
+    "notes": "",
+    "_exam_block": "B"
+  },
+  {
+    "id": 17,
+    "module": "m5",
+    "type": "theory",
+    "title": "Digital Signatures and Digital Certificates",
+    "body": "Digital Signatures and Digital Certificates",
+    "checkpoints": [
+      "digital signature definition",
+      "authentication",
+      "data integrity",
+      "non-repudiation",
+      "digital certificate definition",
+      "certificate authority",
+      "public key ownership",
+      "use in HTTPS"
+    ],
+    "explanation": "Digital signatures ensure data authenticity and integrity. They confirm the identity of the sender. Digital signatures use cryptographic techniques. Digital certificates verify ownership of public keys. Certificates are issued by trusted authorities. They contain identity and key information. Digital certificates enable secure communication. HTTPS relies on certificates. They prevent impersonation. Trust is built using certificates.",
+    "notes": ""
+  },
+  {
+    "id": 18,
+    "module": "m5",
+    "type": "theory",
+    "title": "Cryptography, SSL, and Web Security",
+    "body": "Cryptography, SSL, and Web Security",
+    "checkpoints": [
+      "cryptography definition",
+      "encryption and decryption",
+      "confidentiality",
+      "integrity",
+      "symmetric cryptography",
+      "asymmetric cryptography",
+      "SSL/TLS role",
+      "web security importance"
+    ],
+    "explanation": "Cryptography protects information using encryption and decryption. It ensures confidentiality and integrity. Cryptography includes symmetric and asymmetric methods. SSL secures data transmission over networks. SSL uses encryption and certificates. HTTPS is based on SSL/TLS. Web security protects against attacks. Firewalls and encryption enhance security. Secure communication is essential online. Cryptography is the foundation of web security.",
+    "notes": ""
+  }
+]
