@@ -11,9 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== экзамен =====
   let examMode = false;
   let examAnswers = {};
-  // {
-  //   "A_12": { coverage: 80, missed: ["file sharing"] }
-  // }
+  let examTimer = null;
 
   // ---------- загрузка предметов ----------
   fetch("/subjects")
@@ -35,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadQuestions(subject) {
     examMode = false;
     examAnswers = {};
-    timerEl.textContent = "";
+    clearTimer();
 
     fetch(`/questions/${subject}`)
       .then(r => r.json())
@@ -73,8 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function addBlock(block, qs) {
       qs.forEach(q => {
-        q._examId = `${block}_${q.id}`;
-        questions.push(q);
+        questions.push({
+          ...q,
+          _examBlock: block,
+          _examId: `${block}_${q.id}`
+        });
       });
     }
 
@@ -95,7 +96,12 @@ document.addEventListener("DOMContentLoaded", () => {
     questionText.textContent =
       q.body + (q.explanation ? "\n\n" + q.explanation : "");
 
-    notesEl.value = "";
+    if (examMode && examAnswers[q._examId]?.text) {
+      notesEl.value = examAnswers[q._examId].text;
+    } else {
+      notesEl.value = "";
+    }
+
     resultEl.textContent = "";
   }
 
@@ -118,30 +124,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const text = notesEl.value.trim();
-
-    // ❗ проверка на пустой ответ
-    if (text.length === 0) {
+    if (!text) {
       alert("Ответ пустой. Напиши объяснение.");
       return;
     }
 
     // ---------- лимиты экзамена ----------
     if (examMode && q._examId) {
-      const block = q._examId.split("_")[0];
+      const block = q._examBlock;
       const limit = block === "A" ? 3 : block === "B" ? 2 : 1;
 
-      if (!examAnswers[q._examId]) {
-        const used = Object.keys(examAnswers)
-          .filter(k => k.startsWith(block)).length;
+      const used = Object.values(examAnswers)
+        .filter(a => a.block === block).length;
 
-        if (used >= limit) {
-          alert(`Лимит блока ${block} исчерпан`);
-          return;
-        }
+      if (!examAnswers[q._examId] && used >= limit) {
+        alert(`Лимит блока ${block} исчерпан`);
+        return;
       }
     }
 
-    // ---------- проверка ----------
     const res = await fetch("/check", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -153,23 +154,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const data = await res.json();
 
-    // ---------- вывод ----------
+    const results = data.result || data.details || [];
+    if (results.length === 0) {
+      resultEl.textContent = "Проверка недоступна";
+      return;
+    }
+
     let out = "";
     const missed = [];
 
-    data.result.forEach(r => {
+    results.forEach(r => {
       out += (r.hit ? "✔ " : "✘ ") + r.checkpoint + "\n";
       if (!r.hit) missed.push(r.checkpoint);
     });
 
-    out += `\nПокрытие: ${data.coverage}%\n`;
+    const coverage = data.coverage ?? 0;
+    out += `\nПокрытие: ${coverage}%\n`;
+
+    if (missed.length) {
+      out += "\nГде провалился:\n";
+      missed.forEach(m => out += `- ${m}\n`);
+    }
 
     resultEl.textContent = out;
 
-    // ---------- сохранить результат экзамена ----------
     if (examMode && q._examId) {
       examAnswers[q._examId] = {
-        coverage: data.coverage,
+        text,
+        block: q._examBlock,
+        coverage,
         missed
       };
     }
@@ -177,18 +190,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ---------- таймер ----------
   function startTimer(seconds) {
+    clearTimer();
     let remaining = seconds;
     timerEl.textContent = formatTime(remaining);
 
-    const interval = setInterval(() => {
+    examTimer = setInterval(() => {
       remaining--;
       timerEl.textContent = formatTime(remaining);
 
       if (remaining <= 0) {
-        clearInterval(interval);
+        clearTimer();
         finishExam();
       }
     }, 1000);
+  }
+
+  function clearTimer() {
+    if (examTimer) {
+      clearInterval(examTimer);
+      examTimer = null;
+    }
+    timerEl.textContent = "";
   }
 
   function finishExam() {
@@ -214,9 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     Object.keys(repeat)
       .sort((a, b) => repeat[b] - repeat[a])
-      .forEach(r => {
-        out += `- ${r}\n`;
-      });
+      .forEach(r => out += `- ${r}\n`);
 
     resultEl.textContent = out;
     alert("Экзамен завершён");
