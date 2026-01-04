@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== экзамен =====
   let examMode = false;
-  let examAnswers = {}; // { "A_12": 80 }
+  let examAnswers = {};
+  // {
+  //   "A_12": { coverage: 80, missed: ["file sharing"] }
+  // }
 
   // ---------- загрузка предметов ----------
   fetch("/subjects")
@@ -81,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderList(questions);
     showQuestion(0);
-    startTimer(3 * 60 * 60); // 3 часа
+    startTimer(3 * 60 * 60);
   };
 
   // ---------- показать вопрос ----------
@@ -116,12 +119,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const text = notesEl.value.trim();
 
+    // ❗ проверка на пустой ответ
+    if (text.length === 0) {
+      alert("Ответ пустой. Напиши объяснение.");
+      return;
+    }
+
     // ---------- лимиты экзамена ----------
     if (examMode && q._examId) {
-      const block = q._examId.split("_")[0]; // A / B / C
+      const block = q._examId.split("_")[0];
       const limit = block === "A" ? 3 : block === "B" ? 2 : 1;
 
-      if (!examAnswers[q._examId] && text !== "") {
+      if (!examAnswers[q._examId]) {
         const used = Object.keys(examAnswers)
           .filter(k => k.startsWith(block)).length;
 
@@ -144,21 +153,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const data = await res.json();
 
+    // ---------- вывод ----------
     let out = "";
-    data.details.forEach(d => {
-      out += (d.hit ? "✔ " : "✘ ") + d.checkpoint + "\n";
+    const missed = [];
+
+    data.result.forEach(r => {
+      out += (r.hit ? "✔ " : "✘ ") + r.checkpoint + "\n";
+      if (!r.hit) missed.push(r.checkpoint);
     });
 
-    out += "\nПокрытие: " + data.coverage + "%\n\n";
-    out += "Комментарий:\n";
-    data.comment.forEach(c => {
-      out += "- " + c + "\n";
-    });
+    out += `\nПокрытие: ${data.coverage}%\n`;
 
     resultEl.textContent = out;
 
+    // ---------- сохранить результат экзамена ----------
     if (examMode && q._examId) {
-      examAnswers[q._examId] = data.coverage;
+      examAnswers[q._examId] = {
+        coverage: data.coverage,
+        missed
+      };
     }
   };
 
@@ -173,10 +186,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (remaining <= 0) {
         clearInterval(interval);
-        alert("Время вышло");
-        examMode = false;
+        finishExam();
       }
     }, 1000);
+  }
+
+  function finishExam() {
+    examMode = false;
+
+    let total = 0;
+    let count = 0;
+    const repeat = {};
+
+    Object.values(examAnswers).forEach(a => {
+      total += a.coverage;
+      count++;
+      a.missed.forEach(m => {
+        repeat[m] = (repeat[m] || 0) + 1;
+      });
+    });
+
+    const score = count ? Math.round(total / count) : 0;
+
+    let out = `ИТОГ ЭКЗАМЕНА\n\n`;
+    out += `Средний результат: ${score}%\n\n`;
+    out += `Что повторить:\n`;
+
+    Object.keys(repeat)
+      .sort((a, b) => repeat[b] - repeat[a])
+      .forEach(r => {
+        out += `- ${r}\n`;
+      });
+
+    resultEl.textContent = out;
+    alert("Экзамен завершён");
   }
 
   function formatTime(sec) {
