@@ -91,25 +91,67 @@ class CheckRequest(BaseModel):
 @app.post("/check")
 def check_answer_api(req: CheckRequest):
     notes_l = req.notes.lower()
-    hits = 0
-    result = []
 
+    hits = 0
+    details = []
+
+    # --- базовая проверка чекпоинтов ---
     for cp in req.checkpoints:
         ok = cp.lower() in notes_l
-        result.append({
+        details.append({
             "checkpoint": cp,
             "hit": ok
         })
         if ok:
             hits += 1
 
-    coverage = int((hits / len(req.checkpoints)) * 100) if req.checkpoints else 0
+    if not req.checkpoints:
+        return {
+            "coverage": 0,
+            "details": [],
+            "comment": "Нет чекпоинтов для проверки"
+        }
+
+    coverage = int((hits / len(req.checkpoints)) * 100)
+
+    # ===============================
+    # УРОВЕНЬ 1 — штрафы
+    # ===============================
+
+    comment = []
+    word_count = len(req.notes.split())
+    line_count = len(req.notes.strip().splitlines())
+
+    penalty = 0
+
+    # слишком коротко
+    if word_count < 40:
+        penalty += 20
+        comment.append("Ответ слишком короткий, не хватает объяснений")
+
+    # похоже на список
+    if line_count >= word_count / 2:
+        penalty += 30
+        comment.append("Ответ выглядит как список, а не связный текст")
+
+    coverage = max(0, coverage - penalty)
+
+    # ===============================
+    # УРОВЕНЬ 3 — комментарий экзаменатора
+    # ===============================
+
+    if coverage >= 85:
+        comment.append("Ответ полный и хорошо структурирован")
+    elif coverage >= 65:
+        comment.append("Ответ частично раскрыт, но не хватает деталей")
+    else:
+        comment.append("Ответ поверхностный, требуется объяснение")
 
     return {
-        "result": result,
-        "coverage": coverage
+        "coverage": coverage,
+        "details": details,
+        "comment": comment
     }
-
 # ---------- frontend ----------
 app.mount(
     "/static",

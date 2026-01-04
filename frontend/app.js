@@ -9,79 +9,41 @@ document.addEventListener("DOMContentLoaded", () => {
   let questions = [];
 
   // ===== экзамен =====
-  let exam = null;
   let examMode = false;
+  let examAnswers = {}; // { "A_12": 80 }
 
   // ---------- загрузка предметов ----------
   fetch("/subjects")
     .then(r => r.json())
     .then(subjects => {
       subjectSelect.innerHTML = "";
-
       subjects.forEach(s => {
         const opt = document.createElement("option");
         opt.value = s;
         opt.textContent = s;
         subjectSelect.appendChild(opt);
       });
-
       if (subjects.length > 0) {
         loadQuestions(subjects[0]);
       }
-    })
-    .catch(err => {
-      console.error("Ошибка загрузки предметов", err);
     });
 
-  // ---------- загрузка вопросов (обычный режим) ----------
+  // ---------- обычный режим ----------
   function loadQuestions(subject) {
     examMode = false;
-    exam = null;
-    localStorage.removeItem("exam");
+    examAnswers = {};
+    timerEl.textContent = "";
 
     fetch(`/questions/${subject}`)
       .then(r => r.json())
       .then(data => {
         questions = data;
-        renderQuestionList(data);
+        renderList(data);
         if (data.length > 0) showQuestion(0);
-        timerEl.textContent = "";
       });
   }
 
-  // ---------- экзамен ----------
-  window.startExam = function () {
-    const subject = subjectSelect.value;
-    if (!subject) {
-      alert("Выбери предмет");
-      return;
-    }
-
-    fetch(`/exam/${subject}`)
-      .then(r => r.json())
-      .then(data => {
-        if (data.error) {
-          alert(data.error);
-          return;
-        }
-
-        examMode = true;
-        exam = {
-          started: true,
-          startTime: Date.now(),
-          duration: 3 * 60 * 60, // 3 часа (можно временно 600)
-          blocks: data,
-          answers: {}
-        };
-
-        localStorage.setItem("exam", JSON.stringify(exam));
-        renderExam();
-        startTimer();
-      });
-  };
-
-  // ---------- отрисовка списка ----------
-  function renderQuestionList(qs) {
+  function renderList(qs) {
     questionSelect.innerHTML = "";
     qs.forEach((q, i) => {
       const opt = document.createElement("option");
@@ -91,153 +53,136 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function renderExam() {
-    questionSelect.innerHTML = "";
+  // ---------- старт экзамена ----------
+  window.startExam = async function () {
+    const subject = subjectSelect.value;
+    const res = await fetch(`/exam/${subject}`);
+    const data = await res.json();
+
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
+
+    examMode = true;
+    examAnswers = {};
     questions = [];
 
-    function header(text) {
-      const opt = document.createElement("option");
-      opt.textContent = text;
-      opt.disabled = true;
-      questionSelect.appendChild(opt);
+    function addBlock(block, qs) {
+      qs.forEach(q => {
+        q._examId = `${block}_${q.id}`;
+        questions.push(q);
+      });
     }
 
-    function addQuestion(q) {
-      questions.push(q);
-      const opt = document.createElement("option");
-      opt.value = q.id;
-      opt.textContent = q.title;
-      questionSelect.appendChild(opt);
-    }
+    addBlock("A", data.A);
+    addBlock("B", data.B);
+    addBlock("C", data.C);
 
-    header("БЛОК A (ответить на 3 из 4)");
-    exam.blocks.A.forEach(addQuestion);
-
-    header("БЛОК B (ответить на 2 из 3)");
-    exam.blocks.B.forEach(addQuestion);
-
-    header("БЛОК C (обязательный)");
-    exam.blocks.C.forEach(addQuestion);
-  }
+    renderList(questions);
+    showQuestion(0);
+    startTimer(3 * 60 * 60); // 3 часа
+  };
 
   // ---------- показать вопрос ----------
   function showQuestion(index) {
-    const q = examMode
-      ? questions.find(x => x.id == index)
-      : questions[index];
-
+    const q = questions[index];
     if (!q) return;
 
     questionText.textContent =
       q.body + (q.explanation ? "\n\n" + q.explanation : "");
 
-    if (examMode && exam.answers[q.id]) {
-      notesEl.value = exam.answers[q.id];
-    } else {
-      notesEl.value = "";
-    }
-
+    notesEl.value = "";
     resultEl.textContent = "";
   }
 
-  // ---------- события ----------
   subjectSelect.addEventListener("change", () => {
     loadQuestions(subjectSelect.value);
   });
 
   questionSelect.addEventListener("change", () => {
-    showQuestion(questionSelect.value);
+    showQuestion(Number(questionSelect.value));
   });
-
-  // ---------- экзамен: блок ----------
-  function getExamBlock(question) {
-    if (exam.blocks.A.find(q => q.id === question.id)) return "A";
-    if (exam.blocks.B.find(q => q.id === question.id)) return "B";
-    if (exam.blocks.C.find(q => q.id === question.id)) return "C";
-    return null;
-  }
-
-  function countAnswered(block) {
-    return Object.keys(exam.answers).filter(qid => {
-      const q = exam.blocks[block].find(x => x.id == qid);
-      return q && exam.answers[qid].trim() !== "";
-    }).length;
-  }
 
   // ---------- проверка ----------
   window.checkAnswer = async function () {
-    const q = examMode
-      ? questions.find(x => x.id == questionSelect.value)
-      : questions[questionSelect.value];
+    const index = Number(questionSelect.value);
+    const q = questions[index];
 
     if (!q || !q.checkpoints) {
       resultEl.textContent = "Нет чекпоинтов";
       return;
     }
 
-    // --- экзаменационные ограничения ---
-    if (examMode) {
-      const block = getExamBlock(q);
-      const text = notesEl.value.trim();
+    const text = notesEl.value.trim();
+
+    // ---------- лимиты экзамена ----------
+    if (examMode && q._examId) {
+      const block = q._examId.split("_")[0]; // A / B / C
       const limit = block === "A" ? 3 : block === "B" ? 2 : 1;
 
-      if (!exam.answers[q.id] && text !== "") {
-        if (countAnswered(block) >= limit) {
+      if (!examAnswers[q._examId] && text !== "") {
+        const used = Object.keys(examAnswers)
+          .filter(k => k.startsWith(block)).length;
+
+        if (used >= limit) {
           alert(`Лимит блока ${block} исчерпан`);
           return;
         }
       }
-
-      exam.answers[q.id] = text;
-      localStorage.setItem("exam", JSON.stringify(exam));
     }
 
-    // --- проверка ---
+    // ---------- проверка ----------
     const res = await fetch("/check", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        notes: notesEl.value,
+        notes: text,
         checkpoints: q.checkpoints
       })
     });
 
     const data = await res.json();
 
-    let text = "";
-    data.result.forEach(r => {
-      text += (r.hit ? "✔ " : "✘ ") + r.checkpoint + "\n";
+    let out = "";
+    data.details.forEach(d => {
+      out += (d.hit ? "✔ " : "✘ ") + d.checkpoint + "\n";
     });
-    text += "\nПокрытие: " + data.coverage + "%";
 
-    resultEl.textContent = text;
+    out += "\nПокрытие: " + data.coverage + "%\n\n";
+    out += "Комментарий:\n";
+    data.comment.forEach(c => {
+      out += "- " + c + "\n";
+    });
+
+    resultEl.textContent = out;
+
+    if (examMode && q._examId) {
+      examAnswers[q._examId] = data.coverage;
+    }
   };
 
   // ---------- таймер ----------
-  function startTimer() {
+  function startTimer(seconds) {
+    let remaining = seconds;
+    timerEl.textContent = formatTime(remaining);
+
     const interval = setInterval(() => {
-      if (!exam || !exam.started) {
+      remaining--;
+      timerEl.textContent = formatTime(remaining);
+
+      if (remaining <= 0) {
         clearInterval(interval);
-        return;
-      }
-
-      const elapsed = Math.floor((Date.now() - exam.startTime) / 1000);
-      const left = exam.duration - elapsed;
-
-      if (left <= 0) {
         alert("Время вышло");
-        exam.started = false;
-        localStorage.removeItem("exam");
-        timerEl.textContent = "00:00:00";
-        clearInterval(interval);
-        return;
+        examMode = false;
       }
-
-      const h = String(Math.floor(left / 3600)).padStart(2, "0");
-      const m = String(Math.floor((left % 3600) / 60)).padStart(2, "0");
-      const s = String(left % 60).padStart(2, "0");
-
-      timerEl.textContent = `${h}:${m}:${s}`;
     }, 1000);
+  }
+
+  function formatTime(sec) {
+    const h = String(Math.floor(sec / 3600)).padStart(2, "0");
+    const m = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
+    const s = String(sec % 60).padStart(2, "0");
+    return `${h}:${m}:${s}`;
   }
 });
