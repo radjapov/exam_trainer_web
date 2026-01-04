@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let examAnswers = {};
   let examTimer = null;
 
-  // ---------- загрузка предметов ----------
+  /* ==========================
+     ЗАГРУЗКА ПРЕДМЕТОВ
+  ========================== */
   fetch("/subjects")
     .then(r => r.json())
     .then(subjects => {
@@ -24,12 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
         opt.textContent = s;
         subjectSelect.appendChild(opt);
       });
-      if (subjects.length > 0) {
-        loadQuestions(subjects[0]);
-      }
+      if (subjects.length > 0) loadQuestions(subjects[0]);
+    })
+    .catch(err => {
+      console.error("Ошибка загрузки предметов", err);
+      resultEl.textContent = "Ошибка загрузки предметов";
     });
 
-  // ---------- обычный режим ----------
+  /* ==========================
+     ОБЫЧНЫЙ РЕЖИМ
+  ========================== */
   function loadQuestions(subject) {
     examMode = false;
     examAnswers = {};
@@ -38,9 +44,16 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(`/questions/${subject}`)
       .then(r => r.json())
       .then(data => {
+        if (!Array.isArray(data)) {
+          throw new Error("Questions is not array");
+        }
         questions = data;
         renderList(data);
         if (data.length > 0) showQuestion(0);
+      })
+      .catch(err => {
+        console.error(err);
+        resultEl.textContent = "Ошибка загрузки вопросов";
       });
   }
 
@@ -49,58 +62,67 @@ document.addEventListener("DOMContentLoaded", () => {
     qs.forEach((q, i) => {
       const opt = document.createElement("option");
       opt.value = i;
-      opt.textContent = q.title;
+      opt.textContent = q.title || `Вопрос ${i + 1}`;
       questionSelect.appendChild(opt);
     });
   }
 
-  // ---------- старт экзамена ----------
+  /* ==========================
+     СТАРТ ЭКЗАМЕНА
+  ========================== */
   window.startExam = async function () {
-    const subject = subjectSelect.value;
-    const res = await fetch(`/exam/${subject}`);
-    const data = await res.json();
+    try {
+      const subject = subjectSelect.value;
+      const res = await fetch(`/exam/${subject}`);
+      const data = await res.json();
 
-    if (data.error) {
-      alert(data.error);
-      return;
-    }
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
 
-    examMode = true;
-    examAnswers = {};
-    questions = [];
+      examMode = true;
+      examAnswers = {};
+      questions = [];
 
-    function addBlock(block, qs) {
-      qs.forEach(q => {
-        questions.push({
-          ...q,
-          _examBlock: block,
-          _examId: `${block}_${q.id}`
+      function addBlock(block, qs) {
+        if (!Array.isArray(qs)) return;
+        qs.forEach(q => {
+          questions.push({
+            ...q,
+            _examBlock: block,
+            _examId: `${block}_${q.id}`
+          });
         });
-      });
+      }
+
+      addBlock("A", data.A);
+      addBlock("B", data.B);
+      addBlock("C", data.C);
+
+      renderList(questions);
+      showQuestion(0);
+      startTimer(3 * 60 * 60);
+    } catch (e) {
+      console.error(e);
+      resultEl.textContent = "Ошибка запуска экзамена";
     }
-
-    addBlock("A", data.A);
-    addBlock("B", data.B);
-    addBlock("C", data.C);
-
-    renderList(questions);
-    showQuestion(0);
-    startTimer(3 * 60 * 60);
   };
 
-  // ---------- показать вопрос ----------
+  /* ==========================
+     ПОКАЗ ВОПРОСА
+  ========================== */
   function showQuestion(index) {
     const q = questions[index];
     if (!q) return;
 
     questionText.textContent =
-      q.body + (q.explanation ? "\n\n" + q.explanation : "");
+      (q.body || "") + (q.explanation ? "\n\n" + q.explanation : "");
 
-    if (examMode && examAnswers[q._examId]?.text) {
-      notesEl.value = examAnswers[q._examId].text;
-    } else {
-      notesEl.value = "";
-    }
+    notesEl.value =
+      examMode && examAnswers[q._examId]?.text
+        ? examAnswers[q._examId].text
+        : "";
 
     resultEl.textContent = "";
   }
@@ -113,13 +135,15 @@ document.addEventListener("DOMContentLoaded", () => {
     showQuestion(Number(questionSelect.value));
   });
 
-  // ---------- проверка ----------
+  /* ==========================
+     ПРОВЕРКА ОТВЕТА
+  ========================== */
   window.checkAnswer = async function () {
     const index = Number(questionSelect.value);
     const q = questions[index];
 
-    if (!q || !q.checkpoints) {
-      resultEl.textContent = "Нет чекпоинтов";
+    if (!q || !Array.isArray(q.checkpoints)) {
+      resultEl.textContent = "Нет чекпоинтов для проверки";
       return;
     }
 
@@ -129,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ---------- лимиты экзамена ----------
+    // ----- лимиты экзамена -----
     if (examMode && q._examId) {
       const block = q._examBlock;
       const limit = block === "A" ? 3 : block === "B" ? 2 : 1;
@@ -143,20 +167,34 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    const res = await fetch("/check", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        notes: text,
-        checkpoints: q.checkpoints
-      })
-    });
+    let data;
+    try {
+      const res = await fetch("/check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          notes: text,
+          checkpoints: q.checkpoints
+        })
+      });
 
-    const data = await res.json();
+      data = await res.json();
+    } catch (e) {
+      console.error(e);
+      resultEl.textContent = "Ошибка проверки (сервер недоступен)";
+      return;
+    }
 
-    const results = data.result || data.details || [];
-    if (results.length === 0) {
-      resultEl.textContent = "Проверка недоступна";
+    // ----- ЖЁСТКАЯ ПРОВЕРКА ФОРМАТА -----
+    let results = null;
+
+    if (Array.isArray(data.result)) {
+      results = data.result;
+    } else if (Array.isArray(data.details)) {
+      results = data.details;
+    } else {
+      console.error("Неверный формат /check:", data);
+      resultEl.textContent = "Ошибка проверки (неверный формат ответа)";
       return;
     }
 
@@ -168,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!r.hit) missed.push(r.checkpoint);
     });
 
-    const coverage = data.coverage ?? 0;
+    const coverage = typeof data.coverage === "number" ? data.coverage : 0;
     out += `\nПокрытие: ${coverage}%\n`;
 
     if (missed.length) {
@@ -188,7 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // ---------- таймер ----------
+  /* ==========================
+     ТАЙМЕР
+  ========================== */
   function startTimer(seconds) {
     clearTimer();
     let remaining = seconds;
